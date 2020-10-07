@@ -1,0 +1,26 @@
+{
+    "buildPath": "Resources/GameDBs/Binary",
+    "downloadServer": "https://s3-eu-west-1.amazonaws.com/worldsadrift",
+    "exportPath": "Resources/Scripts/DB",
+    "gameDBPaths": [
+        "Resources/DB/gameDB.json",
+        "Resources/DB/SRGeneralDB.json"
+    ],
+    "gameDBServer": "http://localhost:8000",
+    "googleSheets": {
+        "Main": {
+            "sheetID": null,
+            "webAppUrl": ""
+        }
+    },
+    "importedEnums": [
+        "Days",
+        "Colors",
+        "Names",
+        "Rarity",
+        "InputAnalyser+InputType"
+    ],
+    "importedPrefabs": [
+        
+    ]
+}
