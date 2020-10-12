@@ -1,26 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using GameDBSplitrealm;
+﻿using UnityEngine;
+using UnityEngine.WSA;
 
 public class DBHanler : MonoBehaviour
 {
     void Start()
     {
-        GameDB gameDb = new GameDB("MyGameDB");
-        List<GameObject> tilesGo = new List<GameObject>();
-
-        gameDb.OnDBLoaded = delegate ()
-        {
-            var tiles = gameDb.TilesTable.GetByKey("");
-
-            foreach(var tile in gameDb.TilesTable.GetRows())
-            {
-                tilesGo.Add(tile);
-            }
-        };
-
-        gameDb.Load("GameDBs/gameDB");
+        
     }
 
     void LoadAllDBs()
@@ -32,8 +17,6 @@ public class DBHanler : MonoBehaviour
     {
 
     }
-    
-    // FetchTileByID(tileID)
 
     // FetchRandomTile(amount)
 
