@@ -21,6 +21,4 @@ public class Tiles : ScriptableObject
 	{
 		isDecoratied = !isDecoratied;
 	}
-
-
 }

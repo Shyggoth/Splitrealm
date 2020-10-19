@@ -13,7 +13,6 @@ public class TileDatabase : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
-
     }
 
     public List<Tiles> GetTileList()
