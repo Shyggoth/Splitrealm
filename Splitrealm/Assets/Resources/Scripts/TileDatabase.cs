@@ -1,16 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TileDatabase : MonoBehaviour
 {
-    public List<Tiles> tiles;
+    public static TileDatabase Instance { get; set; }
+    [SerializeField]
+    public List<Tiles> Tiles = new List<Tiles>();
 
-    void BuildTilesDatabase()
+    private void Start()
     {
-        tiles = new List<Tiles>()
-        {
+        if(Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
 
-        };
+    }
+
+    public List<Tiles> GetTileList()
+    {
+        return Tiles;
+    }
+
+    public Tiles GetRandomTile(int amount)
+    {
+
+        return null;
     }
 }
