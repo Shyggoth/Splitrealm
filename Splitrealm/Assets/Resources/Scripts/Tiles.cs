@@ -1,24 +1,13 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Tile", menuName = "Tools/Tiles")]
 public class Tiles : ScriptableObject
 {
-	public int id;
-	public bool buildable;
-	public bool isDecoratied;
-	public float movementFactor;
-	public float attackFactor;
-	public float defenceFactor;
-	public string tileName;
-	public Sprite sprite;
-
-	public void ToggleBuildable()
-    {
-		buildable = !buildable;
-    }
-
-	public void ToggleDecorated()
-	{
-		isDecoratied = !isDecoratied;
-	}
+	public int id = 0;
+	public bool buildable = false;
+	public bool isDecorated = false;
+	public float movementFactor = 0f;
+	public float attackFactor = 0f;
+	public float defenceFactor = 0f;
+	public string tileName = "New Tile";
+	public Sprite sprite = null;
 }
