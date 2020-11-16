@@ -42,14 +42,4 @@ public class Army : MonoBehaviour
 	{
 
 	}
-
-	public void Attack()
-	{
-
-	}
-
-	public void Defend()
-	{
-
-	}
 }
