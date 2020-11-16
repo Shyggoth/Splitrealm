@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEditor;
 
 public class ProzeduralGeneration : MonoBehaviour
 {
-    [SerializeField]
-    int _width;
-    [SerializeField]
-    int _height;
-    [SerializeField]
-    TileDatabase tDB;
-
-    public List<Tiles> tiles = new List<Tiles>();
+    public int _width;
+    public int _height;
+    public MapManager mapManager;
+    public List<Tile> tiles = new List<Tile>();
 
     void Start()
     {
@@ -23,7 +20,14 @@ public class ProzeduralGeneration : MonoBehaviour
 
     void GenerateBaseMap(int width, int height)
     {
-
+        for(int i = 0; i < width; i++)
+        {
+            for(int e = 0; e < height; e++)
+            {
+                Vector3Int tmp = new Vector3Int(i, e, 0);
+                mapManager.terrainTileMap.SetTile(tmp, tiles[Random.Range(0, tiles.Count)]);
+            }
+        }
     }
 
     void Decorate()
@@ -40,6 +44,4 @@ public class ProzeduralGeneration : MonoBehaviour
     {
 
     }
-
-
 }
