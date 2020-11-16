@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a466b5b4f86d041bd0d8447caf92dd, type: 3}
   m_Name: Hans Gruber
   m_EditorClassIdentifier: 
-  id: 0
-  attack: 10
-  defence: 5
-  movement: 3
-  army: 0
+  attackModifier: 2
+  defenceModifier: 1
+  movementModifier: 1
   heroName: Hans Gruber
   factiuon: Dark
   heroSprite: {fileID: 0}

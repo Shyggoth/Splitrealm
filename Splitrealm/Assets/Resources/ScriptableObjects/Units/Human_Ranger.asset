@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f906b9bee8fdf41b9625391a939ecc, type: 3}
   m_Name: Human_Ranger
   m_EditorClassIdentifier: 
-  id: 3
   health: 80
-  movementBase: 2
+  movementBase: 3
   attackBase: 2
   defenceBase: 1
   armor: 1
+  amount: 1
   unitName: Hunter
   faction: Light
   unitSprite: {fileID: 0}

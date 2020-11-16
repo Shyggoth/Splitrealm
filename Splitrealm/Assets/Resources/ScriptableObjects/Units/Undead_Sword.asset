@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f906b9bee8fdf41b9625391a939ecc, type: 3}
   m_Name: Undead_Sword
   m_EditorClassIdentifier: 
-  id: 0
-  health: 100
+  health: 120
   movementBase: 1
   attackBase: 1
-  defenceBase: 1
+  defenceBase: 2
   armor: 1
+  amount: 1
   unitName: Skeletal Warrior
   faction: Dark
   unitSprite: {fileID: 0}

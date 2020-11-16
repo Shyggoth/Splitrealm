@@ -1,8 +1,7 @@
 using UnityEngine;
 using Mirror;
-using System.Collections.Generic;
 
-public class PlayerContainer : NetworkBehaviour
+public class PlayerBehavior : NetworkBehaviour
 {
     // List of Heroes
     // List of Armies
@@ -21,5 +20,4 @@ public class PlayerContainer : NetworkBehaviour
     // Destroy structure
     // Get units
     // Lose units
-    public string playerName;
 }
