@@ -2,96 +2,99 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapManager : MonoBehaviour
+namespace Splitrealm
 {
-    public List<TileData> tileDatas;
-    public Tilemap terrainTileMap, fogTileMap, Decorations;
-    public Dictionary<TileBase, TileData> dataFromTiles;
-    public Camera cam;
-
-    void Awake()
+    public class MapManager : MonoBehaviour
     {
-        dataFromTiles = new Dictionary<TileBase, TileData>();
+        public List<TileData> tileDatas;
+        public Tilemap terrainTileMap, fogTileMap, Decorations;
+        public Dictionary<TileBase, TileData> dataFromTiles;
+        public Camera cam;
 
-        foreach(var tileData in tileDatas)
-            foreach(var tile in tileData.tiles)
-                dataFromTiles.Add(tile, tileData);
-    }
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
+        void Awake()
         {
-            Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPosition = terrainTileMap.WorldToCell(mousePosition);
-            TileBase clickedTile = terrainTileMap.GetTile(gridPosition);
-            float movement = dataFromTiles[clickedTile].movementFactor;
-            float attack = dataFromTiles[clickedTile].attackFactor;
-            float defence = dataFromTiles[clickedTile].defenceFactor;
-            bool build = dataFromTiles[clickedTile].buildable;
-            bool deco = dataFromTiles[clickedTile].isDecorated;
-            print("The clicked Tile is at position " + gridPosition + " and it is a " + clickedTile + " Tile.");
-            print("It has the following values : Movement " + movement + ", Attack " + attack + ", Defense " + defence + ", Buildable " + build + ", Decorated " + deco);
+            dataFromTiles = new Dictionary<TileBase, TileData>();
+
+            foreach(var tileData in tileDatas)
+                foreach(var tile in tileData.tiles)
+                    dataFromTiles.Add(tile, tileData);
         }
-    }
 
-    public float GetMovementFactor(Vector2 worldPosition)
-    {
-        Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
-        TileBase tile = terrainTileMap.GetTile(gridPosition);
+        void Update()
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int gridPosition = terrainTileMap.WorldToCell(mousePosition);
+                TileBase clickedTile = terrainTileMap.GetTile(gridPosition);
+                float movement = dataFromTiles[clickedTile].movementFactor;
+                float attack = dataFromTiles[clickedTile].attackFactor;
+                float defence = dataFromTiles[clickedTile].defenceFactor;
+                bool build = dataFromTiles[clickedTile].buildable;
+                bool deco = dataFromTiles[clickedTile].isDecorated;
+                print("The clicked Tile is at position " + gridPosition + " and it is a " + clickedTile + " Tile.");
+                print("It has the following values : Movement " + movement + ", Attack " + attack + ", Defense " + defence + ", Buildable " + build + ", Decorated " + deco);
+            }
+        }
 
-        if(tile == null)
-            return 0f;
+        public float GetMovementFactor(Vector2 worldPosition)
+        {
+            Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
+            TileBase tile = terrainTileMap.GetTile(gridPosition);
 
-        float movementFactor = dataFromTiles[tile].movementFactor;
-        return movementFactor;
-    }
+            if(tile == null)
+                return 0f;
 
-    public float GetAttackFactor(Vector2 worldPosition)
-    {
-        Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
-        TileBase tile = terrainTileMap.GetTile(gridPosition);
+            float movementFactor = dataFromTiles[tile].movementFactor;
+            return movementFactor;
+        }
 
-        if (tile == null)
-            return 0f;
+        public float GetAttackFactor(Vector2 worldPosition)
+        {
+            Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
+            TileBase tile = terrainTileMap.GetTile(gridPosition);
 
-        float attackFactor = dataFromTiles[tile].attackFactor;
-        return attackFactor;
-    }
+            if(tile == null)
+                return 0f;
 
-    public float GetDefenceFactor(Vector2 worldPosition)
-    {
-        Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
-        TileBase tile = terrainTileMap.GetTile(gridPosition);
+            float attackFactor = dataFromTiles[tile].attackFactor;
+            return attackFactor;
+        }
 
-        if (tile == null)
-            return 0f;
+        public float GetDefenceFactor(Vector2 worldPosition)
+        {
+            Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
+            TileBase tile = terrainTileMap.GetTile(gridPosition);
 
-        float defenceFactor = dataFromTiles[tile].defenceFactor;
-        return defenceFactor;
-    }
+            if(tile == null)
+                return 0f;
 
-    public bool GetBuildability(Vector2 worldPosition)
-    {
-        Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
-        TileBase tile = terrainTileMap.GetTile(gridPosition);
+            float defenceFactor = dataFromTiles[tile].defenceFactor;
+            return defenceFactor;
+        }
 
-        if (tile == null)
-            return false;
+        public bool GetBuildability(Vector2 worldPosition)
+        {
+            Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
+            TileBase tile = terrainTileMap.GetTile(gridPosition);
 
-        bool buildable = dataFromTiles[tile].buildable;
-        return buildable;
-    }
+            if(tile == null)
+                return false;
 
-    public bool GetDecorated(Vector2 worldPosition)
-    {
-        Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
-        TileBase tile = terrainTileMap.GetTile(gridPosition);
+            bool buildable = dataFromTiles[tile].buildable;
+            return buildable;
+        }
 
-        if (tile == null)
-            return false;
+        public bool GetDecorated(Vector2 worldPosition)
+        {
+            Vector3Int gridPosition = terrainTileMap.WorldToCell(worldPosition);
+            TileBase tile = terrainTileMap.GetTile(gridPosition);
 
-        bool isDecorated = dataFromTiles[tile].isDecorated;
-        return isDecorated;
+            if(tile == null)
+                return false;
+
+            bool isDecorated = dataFromTiles[tile].isDecorated;
+            return isDecorated;
+        }
     }
 }

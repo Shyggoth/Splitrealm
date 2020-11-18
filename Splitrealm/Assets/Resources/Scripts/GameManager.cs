@@ -2,15 +2,18 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GameManager : MonoBehaviour
+namespace Splitrealm
 {
-	public List<Player> listOfPlayers = new List<Player>();
-	public Tilemap tileMap;
-    public Canvas canvas;
-    public int timer;
-
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        canvas.GetComponent<Timer>().SetTimer(timer);
+        public List<Player> listOfPlayers = new List<Player>();
+        public Tilemap tileMap;
+        public Canvas canvas;
+        public int timer;
+
+        void Start()
+        {
+            canvas.GetComponent<Timer>().SetTimer(timer);
+        }
     }
 }

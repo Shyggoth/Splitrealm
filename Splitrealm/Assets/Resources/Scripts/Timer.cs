@@ -3,40 +3,43 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+namespace Splitrealm
 {
-    public Text timerText;
-
-    TimeSpan timeSpan;
-    bool isRunning;
-
-    IEnumerator StartTimer(int seconds)
+    public class Timer : MonoBehaviour
     {
-        isRunning = true;
-        UpdateTimer(seconds);
-        timerText.gameObject.SetActive(true);
+        public Text timerText;
 
-        while(seconds != 0)
+        TimeSpan timeSpan;
+        bool isRunning;
+
+        IEnumerator StartTimer(int seconds)
         {
-            yield return new WaitForSeconds(1f);
-            seconds--;
+            isRunning = true;
             UpdateTimer(seconds);
+            timerText.gameObject.SetActive(true);
+
+            while(seconds != 0)
+            {
+                yield return new WaitForSeconds(1f);
+                seconds--;
+                UpdateTimer(seconds);
+            }
+
+            timerText.gameObject.SetActive(false);
+            isRunning = false;
+            StopCoroutine("StartTimer");
         }
 
-        timerText.gameObject.SetActive(false);
-        isRunning = false;
-        StopCoroutine("StartTimer");
-    }
+        void UpdateTimer(int seconds)
+        {
+            timeSpan = TimeSpan.FromSeconds(seconds);
+            timerText.text = timeSpan.ToString();
+        }
 
-    void UpdateTimer(int seconds)
-    {
-        timeSpan = TimeSpan.FromSeconds(seconds);
-        timerText.text = timeSpan.ToString();
-    }
-
-    public void SetTimer(int seconds)
-    {
-        if(!isRunning)
-            StartCoroutine(StartTimer(seconds));
+        public void SetTimer(int seconds)
+        {
+            if(!isRunning)
+                StartCoroutine(StartTimer(seconds));
+        }
     }
 }
