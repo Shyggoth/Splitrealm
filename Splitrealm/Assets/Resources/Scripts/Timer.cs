@@ -1,14 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    IEnumerator StartTimer(int amount)
+    public Text timerText;
+
+    TimeSpan timeSpan;
+    bool isRunning;
+
+    IEnumerator StartTimer(int seconds)
     {
-        while(amount != 0)
+        isRunning = true;
+        UpdateTimer(seconds);
+        timerText.gameObject.SetActive(true);
+
+        while(seconds != 0)
         {
-            
+            yield return new WaitForSeconds(1f);
+            seconds--;
+            UpdateTimer(seconds);
         }
+
+        timerText.gameObject.SetActive(false);
+        isRunning = false;
+        StopCoroutine("StartTimer");
+    }
+
+    void UpdateTimer(int seconds)
+    {
+        timeSpan = TimeSpan.FromSeconds(seconds);
+        timerText.text = timeSpan.ToString();
+    }
+
+    public void SetTimer(int seconds)
+    {
+        if(!isRunning)
+            StartCoroutine(StartTimer(seconds));
     }
 }

@@ -9,7 +9,7 @@ public class Army : MonoBehaviour
 	public GameObject armyPrefab;
 	public List<UnitData> units = new List<UnitData>();
 	public List<int> amounts = new List<int>();
-	public PlayerContainer player;
+	public Player player;
 	public int finalMovement;
 	public Tilemap tileMap;
 

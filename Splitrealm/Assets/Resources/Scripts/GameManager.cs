@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GameManager : MonoBehaviour, IEnumerable
+public class GameManager : MonoBehaviour
 {
-	public List<PlayerContainer> listOfPlayers = new List<PlayerContainer>();
+	public List<Player> listOfPlayers = new List<Player>();
 	public Tilemap tileMap;
+    public Canvas canvas;
+    public int timer;
 
-	public IEnumerator GetEnumerator()
-	{
-		throw new System.NotImplementedException();
-	}
+    void Start()
+    {
+        canvas.GetComponent<Timer>().SetTimer(timer);
+    }
 }
