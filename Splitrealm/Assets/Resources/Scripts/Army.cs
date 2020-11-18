@@ -12,6 +12,7 @@ public class Army : MonoBehaviour
 	public PlayerContainer player;
 	public int finalMovement;
 	public Tilemap tileMap;
+	
 
 	void Start()
 	{
