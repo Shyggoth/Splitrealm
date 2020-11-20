@@ -17,4 +17,4 @@ MonoBehaviour:
   movementModifier: 1
   heroName: Hans Gruber
   factiuon: Dark
-  heroSprite: {fileID: 0}
+  heroSprite: {fileID: 21300000, guid: 159f8ccb8b1783046a9ca8d2535a94b0, type: 3}

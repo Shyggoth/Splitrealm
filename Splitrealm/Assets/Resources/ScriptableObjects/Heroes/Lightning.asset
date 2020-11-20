@@ -17,4 +17,4 @@ MonoBehaviour:
   movementModifier: 2
   heroName: Lightning
   factiuon: Light
-  heroSprite: {fileID: 0}
+  heroSprite: {fileID: 21300000, guid: f8aa991e29a5aac4a8f83692045f1921, type: 3}

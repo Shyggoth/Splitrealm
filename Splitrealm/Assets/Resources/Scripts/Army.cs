@@ -4,7 +4,6 @@ using UnityEngine.Tilemaps;
 
 namespace Splitrealm
 {
-	public class Army : MonoBehaviour
 	{
 		public Dictionary<UnitData, int> armyComposition = new Dictionary<UnitData, int>();
 		public HeroData leadingHero;
