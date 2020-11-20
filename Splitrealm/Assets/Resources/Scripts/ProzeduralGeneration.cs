@@ -2,45 +2,46 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class ProzeduralGeneration : MonoBehaviour
+namespace Splitrealm
 {
-    public int _width;
-    public int _height;
-    public MapManager mapManager;
-    public List<Tile> tiles = new List<Tile>();
-
-    void Start()
+    public class ProzeduralGeneration : MonoBehaviour
     {
-        GenerateBaseMap(_width, _height);
-        Decorate();
-        PlacePOIs();
-        SetSpawnpoints();
-    }
+        public int _width;
+        public int _height;
+        public MapManager mapManager;
+        public List<Tile> tiles = new List<Tile>();
 
-    void GenerateBaseMap(int width, int height)
-    {
-        for(int i = 0; i < width; i++)
+        void Start()
         {
-            for(int e = 0; e < height; e++)
-            {
-                Vector3Int tmp = new Vector3Int(i, e, 0);
-                mapManager.terrainTileMap.SetTile(tmp, tiles[Random.Range(0, tiles.Count)]);
-            }
+            GenerateBaseMap(_width, _height);
+            Decorate();
+            PlacePOIs();
+            SetSpawnpoints();
         }
-    }
 
-    void Decorate()
-    {
+        void GenerateBaseMap(int width, int height)
+        {
+            for(int i = 0; i < width; i++)
+                for(int e = 0; e < height; e++)
+                {
+                    Vector3Int tmp = new Vector3Int(i, e, 0);
+                    mapManager.terrainTileMap.SetTile(tmp, tiles[Random.Range(0, tiles.Count)]);
+                }
+        }
 
-    }
+        void Decorate()
+        {
 
-    void SetSpawnpoints()
-    {
+        }
 
-    }
+        void SetSpawnpoints()
+        {
 
-    void PlacePOIs()
-    {
+        }
 
+        void PlacePOIs()
+        {
+
+        }
     }
 }
