@@ -70,7 +70,7 @@ namespace Splitrealm
             TileBase claimedTile = tileMap.GetTile(gridPosition);
             // Change something to indicate ownership
             // Changing the color of the tile based on your faction
-        //    mapManager.terrainTileMap.GetTile(gridPosition).
+            // mapManager.terrainTileMap.GetTile(gridPosition).
         }
 
         public void CreateArmy(UnitData unit, int amount)
