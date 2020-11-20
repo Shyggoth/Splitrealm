@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f906b9bee8fdf41b9625391a939ecc, type: 3}
   m_Name: Human_Knight
   m_EditorClassIdentifier: 
-  id: 2
   health: 100
   movementBase: 1
   attackBase: 2
-  defenceBase: 1
+  defenceBase: 2
   armor: 1
+  amount: 1
   unitName: Silver Knight
   faction: Light
   unitSprite: {fileID: 0}

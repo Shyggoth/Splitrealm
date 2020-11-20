@@ -17,6 +17,6 @@ MonoBehaviour:
   id: 3
   buildable: 1
   isDecorated: 0
-  movementFactor: 1
+  movementFactor: 0.5
   attackFactor: 1
   defenceFactor: 1
