@@ -13,6 +13,7 @@ namespace Splitrealm
 		public int amount = 10;
 		public string unitName = "New Unit";
 		public string faction = "Faction";
+		public string type = "Type";
 		public Sprite unitSprite;
 		int _currentHealth;
 	}

@@ -8,7 +8,10 @@ namespace Splitrealm
     {
         public int _width;
         public int _height;
+        public GameObject spawner;
         public MapManager mapManager;
+        public TileBase lightSpawn;
+        public TileBase darkSpawn;
         public List<Tile> tiles = new List<Tile>();
 
         void Start()
@@ -36,12 +39,34 @@ namespace Splitrealm
 
         void SetSpawnpoints()
         {
-
+            Vector3Int tmp = new Vector3Int(2, 5, 0);
+            mapManager.Decorations.SetTile(tmp, lightSpawn);
+            Vector3 cellPosition = mapManager.Decorations.GetCellCenterLocal(tmp);
+            GameObject lightSpawner = Instantiate(spawner, cellPosition, Quaternion.identity);
+            lightSpawner.name = "Light Spawner";
+            tmp = mapManager.fogTileMap.WorldToCell(cellPosition);
+            ClearFog(tmp);
+            tmp = new Vector3Int(33, 5, 0);
+            mapManager.Decorations.SetTile(tmp, darkSpawn);
+            cellPosition = mapManager.Decorations.GetCellCenterLocal(tmp);
+            lightSpawner = Instantiate(spawner, cellPosition, Quaternion.identity);
+            lightSpawner.name = "Dark Spawner";
         }
 
         void PlacePOIs()
         {
 
+        }
+
+        public void ClearFog(Vector3Int tmp)
+        {
+            for (int x = -1; x <= 1; x++)
+            {
+                for (int y = -1; y <= 1; y++)
+                {
+                    mapManager.fogTileMap.SetTile(tmp + new Vector3Int(x, y, 0), null);
+                }
+            }
         }
     }
 }

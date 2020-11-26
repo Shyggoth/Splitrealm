@@ -19,6 +19,37 @@ namespace Splitrealm
         public List<Tile> ownedTiles;
         public MapManager mapManager;
         public GameObject armyPrefab;
+        public GameObject spawner;
+        public GameObject army;
+        public GameObject selectedGO;
+        public int vision = 1;
+
+        void Start()
+        {
+            if(armyPrefab.name == "LightArmy")
+            {
+                spawner = GameObject.Find("Light Spawner");
+                mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
+                transform.position = spawner.transform.position;
+                army = Instantiate(armyPrefab, transform.position, Quaternion.identity);
+                army.GetComponent<Army>().player = this;
+                selectedGO = army;
+            }
+            else
+            {
+                spawner = GameObject.Find("Dark Spawner");
+                mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
+                transform.position = spawner.transform.position;
+                army = Instantiate(armyPrefab, transform.position, Quaternion.identity);
+                army.GetComponent<Army>().player = this;
+                selectedGO = army;
+            }
+        }
+
+        void Update()
+        {
+            
+        }
 
         public void AddUnit(UnitData unit, int amount)
         {

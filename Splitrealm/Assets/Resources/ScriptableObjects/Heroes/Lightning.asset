@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackModifier: 1
   defenceModifier: 1
-  movementModifier: 2
+  movementModifier: 1
   heroName: Lightning
   factiuon: Light
   heroSprite: {fileID: 21300000, guid: f8aa991e29a5aac4a8f83692045f1921, type: 3}

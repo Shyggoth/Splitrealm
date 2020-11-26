@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Human_Knight
   m_EditorClassIdentifier: 
   health: 100
-  movementBase: 1
+  movementBase: 30
   attackBase: 2
   defenceBase: 2
   armor: 1
   amount: 1
   unitName: Silver Knight
   faction: Light
+  type: Melee
   unitSprite: {fileID: 21300000, guid: 950018bcb9e7ba14a9e932899a985a46, type: 3}

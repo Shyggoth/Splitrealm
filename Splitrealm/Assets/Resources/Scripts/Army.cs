@@ -8,11 +8,10 @@ namespace Splitrealm
 	{
 		public Dictionary<UnitData, int> armyComposition = new Dictionary<UnitData, int>();
 		public HeroData leadingHero;
-		public GameObject armyPrefab;
 		public List<UnitData> units = new List<UnitData>();
 		public List<int> amounts = new List<int>();
 		public Player player;
-		public int finalMovement;
+		public float finalMovement;
 		public Tilemap tileMap;
 
 		void Start()
@@ -24,9 +23,9 @@ namespace Splitrealm
 				armyComposition[units[i]] = amounts[i];
 		}
 
-		public int CalculateMovement(float terrainFactor, int unitBaseValue, int heroModifier)
+		public float CalculateMovement(float terrainFactor)
 		{
-			finalMovement = unitBaseValue * (int)terrainFactor * heroModifier;
+			finalMovement = units[0].movementBase * leadingHero.movementModifier * terrainFactor;
 			return finalMovement;
 		}
 

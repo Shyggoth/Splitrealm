@@ -10,6 +10,8 @@ namespace Splitrealm
         public Tilemap terrainTileMap, fogTileMap, Decorations;
         public Dictionary<TileBase, TileData> dataFromTiles;
         public Camera cam;
+        public Player player;
+        public GameObject mapMng;
 
         void Awake()
         {
@@ -27,6 +29,7 @@ namespace Splitrealm
                 Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int gridPosition = terrainTileMap.WorldToCell(mousePosition);
                 TileBase clickedTile = terrainTileMap.GetTile(gridPosition);
+                Vector3 cellPosition = terrainTileMap.GetCellCenterLocal(gridPosition);
                 float movement = dataFromTiles[clickedTile].movementFactor;
                 float attack = dataFromTiles[clickedTile].attackFactor;
                 float defence = dataFromTiles[clickedTile].defenceFactor;
@@ -34,6 +37,24 @@ namespace Splitrealm
                 bool deco = dataFromTiles[clickedTile].isDecorated;
                 print("The clicked Tile is at position " + gridPosition + " and it is a " + clickedTile + " Tile.");
                 print("It has the following values : Movement " + movement + ", Attack " + attack + ", Defense " + defence + ", Buildable " + build + ", Decorated " + deco);
+                terrainTileMap.SetColor(gridPosition, Color.red);
+                //float mov = player.GetComponent<Army>().CalculateMovement(GetMovementFactor(cellPosition));
+                
+                player.selectedGO.transform.position = cellPosition;
+                gridPosition = fogTileMap.WorldToCell(cellPosition);
+                ClearFog(gridPosition);
+
+            }
+        }
+
+        public void ClearFog(Vector3Int start)
+        {
+            for (int x = -1; x <= 1; x++)
+            {
+                for (int y = -1; y <= 1; y++)
+                {
+                    fogTileMap.SetTile(start + new Vector3Int(x, y, 0), null);
+                }
             }
         }
 
