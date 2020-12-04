@@ -15,6 +15,7 @@ namespace Splitrealm
 
         public void OnEnable()
         {
+            player = GameObject.Find("Player(Clone)").GetComponent<Player>();
             heroGO.GetComponentInChildren<Text>().text = player.army.GetComponent<Army>().leadingHero.name;
             heroGO.GetComponent<Image>().sprite = player.army.GetComponent<Army>().leadingHero.heroSprite;
             imot1GO.GetComponent<Image>().sprite = player.army.GetComponent<Army>().units[0].unitSprite;
