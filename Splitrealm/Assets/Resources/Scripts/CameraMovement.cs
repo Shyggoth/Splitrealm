@@ -18,6 +18,12 @@ namespace Splitrealm
             if (Input.GetKey("a"))
                 pos.x -= panSpeed * Time.deltaTime;
 
+            if (Input.GetKey("w"))
+                pos.y += panSpeed * Time.deltaTime;
+
+            if (Input.GetKey("s"))
+                pos.y -= panSpeed * Time.deltaTime;
+
             pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
             transform.position = pos;
         }

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3500816946752443665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3500816946752443664}
+  - component: {fileID: 3500816946752443667}
+  - component: {fileID: 3500816946752443666}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3500816946752443664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500816946752443665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.38245797, y: -11.504085, z: -1.352801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3500816946752443667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500816946752443665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e163f75f0cfee44b44b8fe12caac61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDatas:
+  - {fileID: 11400000, guid: 2dbf747720171c549a742cb8ad822f40, type: 2}
+  - {fileID: 11400000, guid: 3a488cff5ea4de1498f3884ea3e29ca9, type: 2}
+  - {fileID: 11400000, guid: 4517f172ac2549e43995ddf88a050220, type: 2}
+  - {fileID: 11400000, guid: 8b5f1321aadbf3147a075273b2646d6a, type: 2}
+  - {fileID: 11400000, guid: 8c82880f72d66d145b8523309821ca97, type: 2}
+  terrainTileMap: {fileID: 0}
+  fogTileMap: {fileID: 0}
+  Decorations: {fileID: 0}
+--- !u!114 &3500816946752443666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500816946752443665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c746e1e06919ff946a83f64c8494d696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 36
+  _height: 12
+  spawner: {fileID: 6089816204738647777, guid: 091a49144aee1a143bd2004248cc60b2, type: 3}
+  mapManager: {fileID: 3500816946752443667}
+  lightSpawn: {fileID: 11400000, guid: a02e44495b2680041b0cff88fef7a85d, type: 2}
+  darkSpawn: {fileID: 11400000, guid: 8978b12210a4fd24ebebae79ab95690a, type: 2}
+  tiles:
+  - {fileID: 11400000, guid: 1c97049a4ce6d3c45a685e1965b79eb9, type: 2}
+  - {fileID: 11400000, guid: 2ac197b7534c46447a9d1b8c116eebec, type: 2}
+  - {fileID: 11400000, guid: 6d05342540fea8642bdc5973966bbba8, type: 2}
+  - {fileID: 11400000, guid: bd1df75e2a2325a4186ff84a07775692, type: 2}
+  - {fileID: 11400000, guid: 53b8ea17bc6fce64fb51b6efc88cd9a4, type: 2}
