@@ -1,19 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Splitrealm;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-namespace Splitrealm
+public class GameManager1 : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
-    {
-        public List<Player> listOfPlayers = new List<Player>();
-        public Tilemap tileMap;
-        public Canvas canvas;
-        public int timer;
+    public CameraMovement camerMOvement;
+    public InputManager inputManager;
 
-        void Start()
-        {
-            canvas.GetComponent<Timer>().SetTimer(timer);
-        }
-    }
+
 }
