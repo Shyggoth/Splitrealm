@@ -1,11 +1,10 @@
-using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Splitrealm
 {
-    public class Player : NetworkBehaviour
+    public class Player : MonoBehaviour
     {
         // Build structure
         // Get resources
@@ -30,26 +29,17 @@ namespace Splitrealm
         {
             cam = GameObject.Find("Main Camera").GetComponent<Camera>();
             mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
-
-            if (GameObject.Find("NetworkManager").GetComponent<NetworkManagerSplit>().playerAmount == 1)
-            {
-                spawner = GameObject.Find("Light Spawner");
-                army = Instantiate(armyPrefabLight, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                spawner = GameObject.Find("Dark Spawner");
-                army = Instantiate(armyPrefabDark, transform.position, Quaternion.identity);
-            }
-
+            spawner = GameObject.Find("Light Spawner");
+            army = Instantiate(armyPrefabLight, transform.position, Quaternion.identity);
             transform.position = spawner.transform.position;
             army.GetComponent<Army>().player = this;
             selectedGO = army;
+            army.transform.position = spawner.transform.position;
         }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0) && isLocalPlayer)
+            if (Input.GetMouseButtonDown(0))
             {
                 Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int gridPosition = mapManager.terrainTileMap.WorldToCell(mousePosition);

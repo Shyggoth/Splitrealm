@@ -17,9 +17,7 @@ namespace Splitrealm
         void Start()
         {
            // mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
-            Debug.Log("Before generate");
             GenerateBaseMap(_width, _height);
-            Debug.Log("After Generate");
             Decorate();
             PlacePOIs();
             SetSpawnpoints();
@@ -56,7 +54,6 @@ namespace Splitrealm
             lightSpawner.name = "Dark Spawner";
             tmp = mapManager.fogTileMap.WorldToCell(cellPosition);
             ClearFog(tmp);
-            GameObject.Find("NetworkManager").GetComponent<NetworkManagerSplit>().SetSpawn();
         }
 
         void PlacePOIs()
