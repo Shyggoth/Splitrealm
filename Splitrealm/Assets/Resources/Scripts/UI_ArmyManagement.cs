@@ -5,17 +5,17 @@ namespace Splitrealm
 {
     public class UI_ArmyManagement : MonoBehaviour
     {
-        public Player player;
-        public GameObject armyManagement;
-        public GameObject heroGO;
-        public GameObject imot1GO;
-        public GameObject imot2GO;
-        public GameObject imot3GO;
-        public GameObject imot4GO;
+        public Player player;                       // The player object
+        public GameObject armyManagement;           // The army managment gameobject
+        public GameObject heroGO;                   // The hero gameobject
+        public GameObject imot1GO;                  // The gameobject of the first unit in the army
+        public GameObject imot2GO;                  // The gameobject of the second unit in the army
+        public GameObject imot3GO;                  // The gameobject of the third unit in the army
+        public GameObject imot4GO;                  // The gameobject of the fourth unit in the army
 
         public void OnEnable()
         {
-            player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+            player = GameObject.Find("Player").GetComponent<Player>();
             heroGO.GetComponentInChildren<Text>().text = player.army.GetComponent<Army>().leadingHero.name;
             heroGO.GetComponent<Image>().sprite = player.army.GetComponent<Army>().leadingHero.heroSprite;
             imot1GO.GetComponent<Image>().sprite = player.army.GetComponent<Army>().units[0].unitSprite;
@@ -32,27 +32,32 @@ namespace Splitrealm
             //armyManagement.transform.Find("Hero").GetComponent<Image>().sprite = armyScript.leadingHero.heroSprite;
         }
 
-        public void SetAmount()
+        // This method will be used to set an amount of a unit type in the army
+        public void SetAmount(int amount)
         {
 
         }
 
+        // This method will be used to get the amount of a unit type in the army
         public void GetAmount()
         {
 
         }
 
-        public void SetHeroSprite()
+        // This method will be used to set the sprite of the hero in the army. Will be used for swaping out heroes.
+        public void SetHeroSprite(Sprite heroImage)
         {
 
         }
 
-        public void SetHeroName()
+        // This method wil be used to set the name of the hero, leading the army. Will be used for swapping out heroes
+        public void SetHeroName(string newHeroName)
         {
 
         }
 
-        public void SetUnit1()
+        // This method will be used to set the units in an army. Used for adding and swapping out units in the army
+        public void SetUnit(int unitSlot)
         {
 
         }

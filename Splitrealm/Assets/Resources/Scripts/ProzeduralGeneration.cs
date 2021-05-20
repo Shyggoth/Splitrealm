@@ -16,10 +16,8 @@ namespace Splitrealm
 
         void Start()
         {
-           // mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
-            Debug.Log("Before generate");
+            mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
             GenerateBaseMap(_width, _height);
-            Debug.Log("After Generate");
             Decorate();
             PlacePOIs();
             SetSpawnpoints();
@@ -45,10 +43,12 @@ namespace Splitrealm
             Vector3Int tmp = new Vector3Int(2, 5, 0);
             mapManager.Decorations.SetTile(tmp, lightSpawn);
             Vector3 cellPosition = mapManager.Decorations.GetCellCenterLocal(tmp);
+            Debug.Log("Before light spawner");
             GameObject lightSpawner = Instantiate(spawner, cellPosition, Quaternion.identity);
             lightSpawner.name = "Light Spawner";
             tmp = mapManager.fogTileMap.WorldToCell(cellPosition);
             ClearFog(tmp);
+            Debug.Log("After light spawner");
             tmp = new Vector3Int(33, 5, 0);
             mapManager.Decorations.SetTile(tmp, darkSpawn);
             cellPosition = mapManager.Decorations.GetCellCenterLocal(tmp);
@@ -56,7 +56,6 @@ namespace Splitrealm
             lightSpawner.name = "Dark Spawner";
             tmp = mapManager.fogTileMap.WorldToCell(cellPosition);
             ClearFog(tmp);
-            GameObject.Find("NetworkManager").GetComponent<NetworkManagerSplit>().SetSpawn();
         }
 
         void PlacePOIs()
@@ -67,12 +66,8 @@ namespace Splitrealm
         public void ClearFog(Vector3Int tmp)
         {
             for (int x = -1; x <= 1; x++)
-            {
                 for (int y = -1; y <= 1; y++)
-                {
                     mapManager.fogTileMap.SetTile(tmp + new Vector3Int(x, y, 0), null);
-                }
-            }
         }
     }
 }

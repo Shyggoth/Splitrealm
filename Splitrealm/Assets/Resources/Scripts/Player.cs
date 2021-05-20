@@ -1,11 +1,10 @@
-using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Splitrealm
 {
-    public class Player : NetworkBehaviour
+    public class Player : MonoBehaviour
     {
         // Build structure
         // Get resources
@@ -31,25 +30,21 @@ namespace Splitrealm
             cam = GameObject.Find("Main Camera").GetComponent<Camera>();
             mapManager = GameObject.Find("MapManager").GetComponent<MapManager>();
 
-            if (GameObject.Find("NetworkManager").GetComponent<NetworkManagerSplit>().playerAmount == 1)
-            {
-                spawner = GameObject.Find("Light Spawner");
-                army = Instantiate(armyPrefabLight, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                spawner = GameObject.Find("Dark Spawner");
-                army = Instantiate(armyPrefabDark, transform.position, Quaternion.identity);
-            }
+            spawner = GameObject.Find("Light Spawner");
+            army = Instantiate(armyPrefabLight, transform.position, Quaternion.identity);
+
+    //        spawner = GameObject.Find("Dark Spawner");
+    //        army = Instantiate(armyPrefabDark, transform.position, Quaternion.identity);
 
             transform.position = spawner.transform.position;
             army.GetComponent<Army>().player = this;
             selectedGO = army;
+            selectedGO.transform.position = spawner.transform.position;
         }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0) && isLocalPlayer)
+            if (Input.GetMouseButtonDown(0))
             {
                 Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int gridPosition = mapManager.terrainTileMap.WorldToCell(mousePosition);
@@ -71,12 +66,8 @@ namespace Splitrealm
         public void ClearFog(Vector3Int start)
         {
             for (int x = -1; x <= 1; x++)
-            {
                 for (int y = -1; y <= 1; y++)
-                {
                     mapManager.fogTileMap.SetTile(start + new Vector3Int(x, y, 0), null);
-                }
-            }
         }
 
         public void AddUnit(UnitData unit, int amount)

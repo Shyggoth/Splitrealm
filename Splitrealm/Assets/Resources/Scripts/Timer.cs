@@ -7,11 +7,11 @@ namespace Splitrealm
 {
     public class Timer : MonoBehaviour
     {
-        public Text timerText;
+        public Text timerText;                                  // The Text component on the gameobject, which holds the timer display text.
+        TimeSpan timeSpan;                                      
+        bool isRunning;                                         // This variable is used to determin, if the timer is running.
 
-        TimeSpan timeSpan;
-        bool isRunning;
-
+        // The Coroutine which is used to start the timer. It requires a parameter, in form of a int, which is the seconds the timer should run.
         IEnumerator StartTimer(int seconds)
         {
             isRunning = true;
@@ -30,12 +30,15 @@ namespace Splitrealm
             StopCoroutine("StartTimer");
         }
 
+
+        // The function is used to update the timer. It has an int parameter which is the amount of seconds.
         void UpdateTimer(int seconds)
         {
             timeSpan = TimeSpan.FromSeconds(seconds);
             timerText.text = timeSpan.ToString();
         }
 
+        // THis function is used to set the timer. It has an int parameter which is given in seconds.
         public void SetTimer(int seconds)
         {
             if(!isRunning)

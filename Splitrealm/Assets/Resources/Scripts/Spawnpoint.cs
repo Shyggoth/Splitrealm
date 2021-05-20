@@ -7,7 +7,7 @@ namespace Splitrealm
 {
     public class Spawnpoint : MonoBehaviour
     {
-        public GameObject armyPrefab;
+        public GameObject armyPrefab;               // The prefab of the to be spawned gameobject
 
         void Start()
         {

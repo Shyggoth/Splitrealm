@@ -1,5 +1,4 @@
-﻿using Mirror;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -22,9 +21,9 @@ namespace Splitrealm
 
         void Start()
         {
-        //    terrainTileMap = GameObject.Find("Terrain/Terrain Map").GetComponent<Tilemap>();
-         //   fogTileMap = GameObject.Find("Terrain/Fog").GetComponent<Tilemap>();
-        //    Decorations = GameObject.Find("Terrain/Decorations").GetComponent<Tilemap>();
+            terrainTileMap = GameObject.Find("Terrain/Terrain Map").GetComponent<Tilemap>();
+            fogTileMap = GameObject.Find("Terrain/Fog").GetComponent<Tilemap>();
+            Decorations = GameObject.Find("Terrain/Decorations").GetComponent<Tilemap>();
         }
 
         public float GetMovementFactor(Vector2 worldPosition)
