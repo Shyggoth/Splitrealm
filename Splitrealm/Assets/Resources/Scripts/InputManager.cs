@@ -6,13 +6,14 @@ public class InputManager : MonoBehaviour
 {
 	public Action<Vector3Int> OnMouseClick, OnMouseHold;
 	public Action OnMouseUp;
-	Vector2 cameraMovementVector;
-	[SerializeField] Camera mainCamera;
 	public LayerMask groundMask;
+	Vector2 _cameraMovementVector;
+	[SerializeField]
+	Camera _mainCamera;
 
 	public Vector2 CameraMovementVector
 	{
-		get { return cameraMovementVector; }
+		get { return _cameraMovementVector; }
 	}
 
 	void Update()
@@ -26,7 +27,7 @@ public class InputManager : MonoBehaviour
 	Vector3Int? RaycastGround()
 	{
 		RaycastHit hit;
-		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+		Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
 		if(Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask))
 		{
@@ -39,12 +40,12 @@ public class InputManager : MonoBehaviour
 
 	void CheckArrowInput()
 	{
-		cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		_cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 	}
 
 	void CheckClickHoldEvent()
 	{
-		if(Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
+		if(Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
 			var position = RaycastGround();
 
@@ -53,20 +54,20 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
-	void CheckClickUpEvent()
-	{
-		if(Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject() == false)
-			OnMouseUp?.Invoke();
-	}
-
 	void CheckClickDownEvent()
 	{
-		if(Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false)
+		if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
 			var position = RaycastGround();
 
 			if(position != null)
 				OnMouseClick?.Invoke(position.Value);
 		}
+	}
+
+	void CheckClickUpEvent()
+	{
+		if(Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
+			OnMouseUp?.Invoke();
 	}
 }
